@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmark Manager</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bookmark Manager</h1>
+    <div class="categories-container" id="categoriesContainer"></div>
+    <div class="details-container" id="detailsContainer"></div>
+    <button class="add-bookmark-btn" onclick="openModal()">Add Bookmark</button>
+  </div>
 
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Add Bookmark</h2>
+      <form id="bookmarkForm" onsubmit="addBookmark(event)">
+        <label for="title">Title:</label>
+        <input type="text" id="title" maxlength="30" required>
+
+        <label for="url">URL:</label>
+        <input type="text" id="url" pattern="https?://.+">
+
+        <label for="category">Category:</label>
+        <div class="category-input">
+          <select id="category" onchange="toggleCategoryInput()">
+            <option value="">Select Category</option>
+            <option value="new">New Category</option>
+          </select>
+          <button type="button" id="addCategoryBtn" class="add-category-btn" onclick="toggleNewCategoryInput()">&#43;</button>
+        </div>
+
+        <input type="text" id="newCategory" placeholder="New Category Name" style="display: none;" required>
+
+        <input type="submit" value="Save">
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
